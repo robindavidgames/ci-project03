@@ -53,10 +53,19 @@ def total_words():
     print("See total words")
 
 
+def validate_data(data):
+    """
+    Validates that data inputted by the user is an integer.
+    Raises ValueError if value is not integer.
+    """
+    print("Validate data")
+
+
 def log_day():
     """
     Update daily writing log.
     Add a new line to the worksheet to represent the current day.
+    Passes value to validate_data() to validate.
     Passes current date to total_words().
     """
     print("Log a new day")
@@ -66,6 +75,7 @@ def prev_day():
     """
     Update a previous daily writing log.
     Allow user to input a previous date and then change the value in that date.
+    Passes value to validate_data() to validate.
     Passes current date to total_words()
     """
     print("Update previous day")
@@ -94,7 +104,7 @@ def main():
 
     while True:
         choice = input("Your choice: ")
-        
+
         if choice == "1":
             log_day()
         elif choice == "2":
