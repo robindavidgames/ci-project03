@@ -2,7 +2,7 @@ Readme
 
 National Novel Writing Month is a yearly event in which people attempt to write an 80000 word novel in the month of November. The event puts a lot of emphasis on daily word counts and reaching goals. The purpose of this piece of software is to provide a way for a user to track their daily writing progress, to see if they are on target, and what they need to do to stay on target or to catch up with their goals if they have fallen behind. It uses a googlesheet to hold information.
 
-
+![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
 
 
