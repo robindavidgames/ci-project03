@@ -13,6 +13,7 @@ def see_target():
     Present the daily writing target.
     Receives progress from target_message().
     """
+    print("Present daily target")
 
 
 def target_message():
@@ -21,6 +22,7 @@ def target_message():
     Recieves the total words and the number of completed dates.
     Passes progress to see_target().
     """
+    print("Present target message")
 
 
 def total_words():
@@ -29,6 +31,7 @@ def total_words():
     Recieves current date.
     Passes total words and current date to target_message().
     """
+    print("See total words")
 
 
 def log_day():
@@ -37,6 +40,7 @@ def log_day():
     Add a new line to the worksheet to represent the current day.
     Passes current date to total_words().
     """
+    print("Log a new day")
 
 
 def prev_day():
@@ -45,6 +49,7 @@ def prev_day():
     Allow user to input a previous date and then change the value in that date.
     Passes current date to total_words()
     """
+    print("Update previous day")
 
 
 def see_progress():
@@ -53,6 +58,7 @@ def see_progress():
     Print the values for all dates input so far.
     Passes current date to total_words()
     """
+    print("See progress")
 
 
 def main():
@@ -61,11 +67,26 @@ def main():
     Provide 4 options to user:
     log update; change previous log; see daily goal; see all progress.
     """
-    print("Choose which action you would like to perform. (Type number 1, 2, 3, or 4)")
+    print("Choose which action you would like to perform. (Type number 1-4)")
     print("1. Add a new day's progress.")
     print("2. Update a previous day's progress.")
     print("3. See your daily goal.")
     print("4. See all your progress.\n")
+
+    choice = input("Your choice: ")
+
+    if choice == "1":
+        log_day()
+    elif choice == "2":
+        prev_day()
+    elif choice == "3":
+        total_words()
+    elif choice == "4":
+        see_progress()
+    else:
+        print("\n Invalid choice. Please input a number between 1 and 4.")
+        choice = input("Your choice: ")
+        #this doesn't work because it comes after the if/elif. Need to make a seperate function.
 
 
 print("Welcome to your National Novel Writing Month progress tracker.\n")
