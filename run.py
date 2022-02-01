@@ -92,20 +92,19 @@ def main():
     print("3. See your daily goal.")
     print("4. See all your progress.\n")
 
-    choice = input("Your choice: ")
-
-    if choice == "1":
-        log_day()
-    elif choice == "2":
-        prev_day()
-    elif choice == "3":
-        total_words()
-    elif choice == "4":
-        see_progress()
-    else:
-        print("\n Invalid choice. Please input a number between 1 and 4.")
+    while True:
         choice = input("Your choice: ")
-        # this doesn't work because it comes after the if/elif. Need to make a seperate function.
+        
+        if choice == "1":
+            log_day()
+        elif choice == "2":
+            prev_day()
+        elif choice == "3":
+            total_words()
+        elif choice == "4":
+            see_progress()
+        else:
+            print("\n Invalid choice. Please input a number between 1 and 4.\n")
 
 
 print("Welcome to your National Novel Writing Month progress tracker.\n")
