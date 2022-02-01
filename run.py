@@ -53,7 +53,7 @@ def total_words():
     print("See total words")
 
 
-def validate_data(data):
+def validate_data(daily_word_count):
     """
     Validates that data inputted by the user is an integer.
     Raises ValueError if value is not integer.
