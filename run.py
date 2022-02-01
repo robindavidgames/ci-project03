@@ -3,9 +3,28 @@ Program to track a single user's writing progress for National Novel Writing
 Month.
 """
 
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('NaNoWriMo Tracker')
+
+wordcount = SHEET.worksheet('wordcount')
+
+data = wordcount.get_all_values()
+
+# Check spreadsheet is connected to python
+print(data)
 
 
 def see_target():
@@ -86,7 +105,7 @@ def main():
     else:
         print("\n Invalid choice. Please input a number between 1 and 4.")
         choice = input("Your choice: ")
-        #this doesn't work because it comes after the if/elif. Need to make a seperate function.
+        # this doesn't work because it comes after the if/elif. Need to make a seperate function.
 
 
 print("Welcome to your National Novel Writing Month progress tracker.\n")

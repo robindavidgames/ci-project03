@@ -4,6 +4,9 @@ National Novel Writing Month is a yearly event in which people attempt to write 
 
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
+# Credits
+How to set up google drive and google sheets API from the Love Sanwiches project.
+
 
 
 
