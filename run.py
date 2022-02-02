@@ -96,23 +96,26 @@ def main():
     Provide 4 options to user:
     log update; change previous log; see daily goal; see all progress.
     """
-    print("Choose which action you would like to perform. (Type number 1-4)")
-    print("1. Add a new day's progress.")
-    print("2. Update a previous day's progress.")
-    print("3. See your daily goal.")
-    print("4. See all your progress.\n")
 
-    while True:
+    menu_loop = True
+
+    while menu_loop == True:
+        print("Choose which action you would like to perform. (Type number 1-4)")
+        print("1. Add a new day's progress.")
+        print("2. Update a previous day's progress.")
+        print("3. See your daily goal.")
+        print("4. See all your progress.\n")
+
         choice = input("Your choice: ")
 
         if choice == "1":
-            log_day()
+            menu_loop = False; log_day()
         elif choice == "2":
-            prev_day()
+            menu_loop = False; prev_day()
         elif choice == "3":
-            total_words()
+            menu_loop = False; total_words()
         elif choice == "4":
-            see_progress()
+            menu_loop = False; see_progress()
         else:
             print("\n Invalid choice. Please input a number between 1 and 4.\n")
 
