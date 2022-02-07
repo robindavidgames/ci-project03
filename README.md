@@ -4,8 +4,13 @@ National Novel Writing Month is a yearly event in which people attempt to write 
 
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
+# Future Features
+## Multiple Users
+By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
+
 # Credits
 How to set up google drive and google sheets API from the Love Sanwiches project.
+Used gspread documentation to learn how update a googlesheet https://buildmedia.readthedocs.org/media/pdf/gspread/latest/gspread.pdf
 
 
 

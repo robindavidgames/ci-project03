@@ -50,7 +50,13 @@ def total_words():
     Recieves current date.
     Passes total words and current date to target_message().
     """
-    print("See total words")
+    # print("See total words")
+    sample = [[1,1,3], [39,44,321]]
+    # total words needs to sum data[0] but without the first entry. Also, need to convert to integer.
+    # may as well figure out the total words of all users and put them into a list.
+    # use a dictionary. each user can have username, total days, wordcount. remove blank values to get total days.
+    total_words = sum(sample[0])
+    print(f"You have written a total of {total_words} words")
 
 
 def validate_data(daily_word_count):
@@ -73,6 +79,7 @@ def update_worksheet(new_wordcount, worksheet):
     """
     Updates the worksheet with the validated value.
     Heavily modified from Love Sandwiches.
+    row_to_update could be changed to reflect current user.
     """
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
@@ -81,6 +88,8 @@ def update_worksheet(new_wordcount, worksheet):
     column_to_update = current_day + 1
     worksheet_to_update.update_cell(row_to_update, column_to_update, new_wordcount)
     print(f"A new daily log has been added to the {worksheet} worksheet\n")
+    
+    total_words()
 
 
 def log_day():
