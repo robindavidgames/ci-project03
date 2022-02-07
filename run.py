@@ -58,18 +58,7 @@ def validate_data(daily_word_count):
     Validates that data inputted by the user is an integer.
     Converts inputted data to integer if possible.
     Raises ValueError if value is not integer.
-    Modified from Love Sandwiches.
     """
-    # print("\nValidating data...")
-
-    # try:
-    #     int(daily_word_count)
-    #     print("Data is valid.\n")
-    # except ValueError as e:
-    #     print(f"Invalid data: {e}, Please input a number.\n")
-    #     return False
-
-    # return True
 
     try:
         int(daily_word_count)
