@@ -63,9 +63,23 @@ def validate_data(daily_word_count):
     try:
         int(daily_word_count)
         print("Data is valid.\n")
+        return(daily_word_count)
     except ValueError:
         print("\nData is invalid. You must input a whole number.")
         log_day()
+
+
+def update_worksheet(new_wordcount, worksheet):
+    """
+    Updates the worksheet with the validated value.
+    Heavily modified from Love Sandwiches.
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    row_to_update = 1
+    column_to_update = 7
+    worksheet_to_update.update_cell(row_to_update, column_to_update, new_wordcount)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 
 def log_day():
@@ -77,9 +91,11 @@ def log_day():
     """
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
-    wordcount = input("Enter wordcount here: ")
+    daily_word_count = input("Enter wordcount here: ")
 
-    validate_data(wordcount)
+    validate_data(daily_word_count)
+
+    update_worksheet(daily_word_count, "wordcount")
 
 
 def prev_day():
