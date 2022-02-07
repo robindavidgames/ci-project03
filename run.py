@@ -77,11 +77,10 @@ def update_worksheet(new_wordcount, worksheet):
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     row_to_update = 1
-    # column_to_update = 7
     current_day = len(data[0])
-    column_to_update = current_day+1
+    column_to_update = current_day + 1
     worksheet_to_update.update_cell(row_to_update, column_to_update, new_wordcount)
-    print(f"{worksheet} worksheet updated successfully\n")
+    print(f"A new daily log has been added to the {worksheet} worksheet\n")
 
 
 def log_day():
