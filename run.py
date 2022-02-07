@@ -68,7 +68,11 @@ def log_day():
     Passes value to validate_data() to validate.
     Passes current date to total_words().
     """
-    print("Log a new day")
+    print("\nEnter your wordcount for a new day.")
+    print("This will create a new entry in your log.\n")
+    wordcount = input("Enter wordcount here: ")
+
+    validate_data(wordcount)
 
 
 def prev_day():
