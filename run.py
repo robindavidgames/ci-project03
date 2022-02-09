@@ -27,24 +27,38 @@ data = wordcount.get_all_values()
 print(data)
 
 
-def see_target():
+def see_target(all_users):
     """
     Present the daily writing target.
+    Recieves list of dictionaries that contains progress for all users and pulls relevant data.
     Receives progress from target_message().
     """
-    print("Present daily target")
+    words_remaining = 80000 - all_users[0]["wordcount"]
+    days_remaining = 30 - all_users[0]["day"]
+    daily_average = int(words_remaining / days_remaining)
+
+    if words_remaining > 0:
+        if days_remaining >= 0:
+            print(f"\nTo stay on track, write {daily_average} words today.")
+        else:
+            print("\nYou ran out of time!")
+            print(f"You have {words_remaining} words remaining.")
+    else:
+        print("You reached your 80,000 word goal!")
 
 
 def target_message(all_users):
     """
     Present a motivational message related to the user being on or off target.
-    Recieves the total words and the number of completed dates.
+    Recieves list of dictionaries that contains progress for all users and pulls relevant data.
     Passes progress to see_target().
     """
     current_wordcount = all_users[0]["wordcount"]
     print(f"\nYou have written a total of {current_wordcount} words")
     average_wordcount = int(current_wordcount / all_users[0]["day"])
     print(f"\nEach day, you write an average of {average_wordcount} words")
+
+    return
 
 
 def total_words(new_wordcount):
@@ -79,6 +93,7 @@ def total_words(new_wordcount):
         all_users.append({"user": current_list[0], "wordcount": total_count, "day": len(current_list)})
 
     target_message(all_users)
+    see_target(all_users)
 
 
 def validate_data(daily_word_count):
