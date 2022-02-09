@@ -51,12 +51,15 @@ def total_words():
     Passes total words and current date to target_message().
     """
     # print("See total words")
-    sample = [[1,1,3], [39,44,321]]
-    # total words needs to sum data[0] but without the first entry. Also, need to convert to integer.
-    # may as well figure out the total words of all users and put them into a list.
-    # use a dictionary. each user can have username, total days, wordcount. remove blank values to get total days.
-    total_words = sum(sample[0])
-    print(f"You have written a total of {total_words} words")
+    sample = [[1, 1, 3], [39, 44, 321]]
+    # total words needs to sum data[0] but without the first entry.
+    # Also, need to convert to integer.
+    # may as well figure out the total words of all users and put
+    # them into a list.
+    # use a dictionary. each user can have username, total days, wordcount.
+    # remove blank values to get total days.
+    sum_words = sum(sample[0])
+    print(f"You have written a total of {sum_words} words")
 
 
 def validate_data(daily_word_count):
@@ -69,7 +72,7 @@ def validate_data(daily_word_count):
     try:
         int(daily_word_count)
         print("Data is valid.\n")
-        return(daily_word_count)
+        return
     except ValueError:
         print("\nData is invalid. You must input a whole number.")
         log_day()
@@ -86,9 +89,10 @@ def update_worksheet(new_wordcount, worksheet):
     row_to_update = 1
     current_day = len(data[0])
     column_to_update = current_day + 1
-    worksheet_to_update.update_cell(row_to_update, column_to_update, new_wordcount)
+    worksheet_to_update.update_cell(
+        row_to_update, column_to_update, new_wordcount)
     print(f"A new daily log has been added to the {worksheet} worksheet\n")
-    
+
     total_words()
 
 
@@ -136,8 +140,9 @@ def main():
 
     menu_loop = True
 
-    while menu_loop == True:
-        print("Choose which action you would like to perform. (Type number 1-4)")
+    while menu_loop is True:
+        print(
+            "Choose which action you would like to perform. (Type number 1-4)")
         print("1. Add a new day's progress.")
         print("2. Update a previous day's progress.")
         print("3. See your daily goal.")
@@ -146,15 +151,20 @@ def main():
         choice = input("Your choice: ")
 
         if choice == "1":
-            menu_loop = False; log_day()
+            menu_loop = False
+            log_day()
         elif choice == "2":
-            menu_loop = False; prev_day()
+            menu_loop = False
+            prev_day()
         elif choice == "3":
-            menu_loop = False; total_words()
+            menu_loop = False
+            total_words()
         elif choice == "4":
-            menu_loop = False; see_progress()
+            menu_loop = False
+            see_progress()
         else:
-            print("\n Invalid choice. Please input a number between 1 and 4.\n")
+            print(
+                "\n Invalid choice. Please input a number between 1 and 4.\n")
 
 
 print("Welcome to your National Novel Writing Month progress tracker.\n")
