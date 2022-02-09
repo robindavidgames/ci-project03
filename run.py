@@ -35,15 +35,16 @@ def see_target():
     print("Present daily target")
 
 
-def target_message():
+def target_message(all_users):
     """
     Present a motivational message related to the user being on or off target.
     Recieves the total words and the number of completed dates.
     Passes progress to see_target().
     """
-    # also give an average.
-    # print(f"You have written a total of {total_count} words")
-    print("Present target message")
+    current_wordcount = all_users[0]["wordcount"]
+    print(f"\nYou have written a total of {current_wordcount} words")
+    average_wordcount = int(current_wordcount / all_users[0]["day"])
+    print(f"\nEach day, you write an average of {average_wordcount} words")
 
 
 def total_words(new_wordcount):
@@ -52,7 +53,6 @@ def total_words(new_wordcount):
     Recieves wordcount for the current date.
     Passes total words and current date to target_message().
     """
-
     all_users = []
  
     for x in range(len(data)):
@@ -78,7 +78,7 @@ def total_words(new_wordcount):
 
         all_users.append({"user": current_list[0], "wordcount": total_count, "day": len(current_list)})
 
-    print(all_users)
+    target_message(all_users)
 
 
 def validate_data(daily_word_count):
@@ -87,7 +87,6 @@ def validate_data(daily_word_count):
     Converts inputted data to integer if possible.
     Raises ValueError if value is not integer.
     """
-
     try:
         int(daily_word_count)
         print("Data is valid.\n")
