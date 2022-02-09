@@ -4,6 +4,17 @@ National Novel Writing Month is a yearly event in which people attempt to write 
 
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
+# Bugs and Issues
+
+## Enumerating (remove this)
+When creating a loop to iterate through a list, I used a range function. Gitpod suggested I try to enumerate to create cleaner code. I used resources at https://dev.to/wangonya/when-to-use-python-s-enumerate-instead-of-range-in-loops-3e03 to change this code:
+
+    for i in range(len(list_splice)):
+
+to this code:
+
+    for i, value in enumerate(list_splice):
+
 # Future Features
 ## Multiple Users
 By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.

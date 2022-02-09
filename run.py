@@ -67,9 +67,8 @@ def total_words(new_wordcount):
     # Sum entries plus today's entry.
     total_count = sum(list_splice) + int(new_wordcount)
 
-    print(total_count)
-
-    # print(f"You have written a total of {sum_words} words")
+    # Move this to target_message and also give an average.
+    print(f"You have written a total of {total_count} words")
 
 
 def validate_data(daily_word_count):
