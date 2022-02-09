@@ -44,22 +44,32 @@ def target_message():
     print("Present target message")
 
 
-def total_words():
+def total_words(new_wordcount):
     """
     Present total number of words written.
-    Recieves current date.
+    Recieves wordcount for the current date.
     Passes total words and current date to target_message().
     """
-    # print("See total words")
-    sample = [[1, 1, 3], [39, 44, 321]]
-    # total words needs to sum data[0] but without the first entry.
-    # Also, need to convert to integer.
     # may as well figure out the total words of all users and put
     # them into a list.
     # use a dictionary. each user can have username, total days, wordcount.
     # remove blank values to get total days.
-    sum_words = sum(sample[0])
-    print(f"You have written a total of {sum_words} words")
+
+    # Select the list to work on.
+    current_list = data[0]
+    # Ignore the first entry.
+    list_splice = current_list[1:len(current_list) + 1]
+
+    # Convert all entries to int.
+    for i in range(len(list_splice)):
+        list_splice[i] = int(list_splice[i])
+
+    # Sum entries plus today's entry.
+    total_count = sum(list_splice) + int(new_wordcount)
+
+    print(total_count)
+
+    # print(f"You have written a total of {sum_words} words")
 
 
 def validate_data(daily_word_count):
@@ -93,7 +103,7 @@ def update_worksheet(new_wordcount, worksheet):
         row_to_update, column_to_update, new_wordcount)
     print(f"A new daily log has been added to the {worksheet} worksheet\n")
 
-    total_words()
+    total_words(new_wordcount)
 
 
 def log_day():
@@ -158,7 +168,7 @@ def main():
             prev_day()
         elif choice == "3":
             menu_loop = False
-            total_words()
+            total_words('0')
         elif choice == "4":
             menu_loop = False
             see_progress()
