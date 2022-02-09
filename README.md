@@ -4,6 +4,9 @@ National Novel Writing Month is a yearly event in which people attempt to write 
 
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
+# Features
+* The total words function creates a dictionary of all users, containing username, word count, and current day. This is to allow the program to compare user performance. 
+
 # Bugs and Issues
 
 ## Enumerating (remove this)

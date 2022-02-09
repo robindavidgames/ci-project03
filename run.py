@@ -41,6 +41,8 @@ def target_message():
     Recieves the total words and the number of completed dates.
     Passes progress to see_target().
     """
+    # also give an average.
+    # print(f"You have written a total of {total_count} words")
     print("Present target message")
 
 
@@ -50,10 +52,6 @@ def total_words(new_wordcount):
     Recieves wordcount for the current date.
     Passes total words and current date to target_message().
     """
-    # may as well figure out the total words of all users and put
-    # them into a list.
-    # use a dictionary. each user can have username, total days, wordcount.
-    # remove blank values to get total days.
 
     all_users = []
  
@@ -75,8 +73,6 @@ def total_words(new_wordcount):
         # Sum entries plus today's entry (if current user).
         if current_list == data[0]:
             total_count = sum(list_splice) + int(new_wordcount)
-            # Move this to target_message and also give an average.
-            print(f"You have written a total of {total_count} words")
         else:
             total_count = sum(list_splice)
 
