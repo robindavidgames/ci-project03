@@ -36,15 +36,22 @@ def see_target(all_users):
     words_remaining = 80000 - all_users[0]["wordcount"]
     days_remaining = 30 - all_users[0]["day"]
     daily_average = int(words_remaining / days_remaining)
-
+    required_today = int((80000 / 30) * all_users[0]["day"])
+    
     if words_remaining > 0:
         if days_remaining >= 0:
-            print(f"\nTo stay on track, write {daily_average} words today.")
+            if (all_users[0]["wordcount"] - 1000) > required_today:
+                print("\nYou're making great progress.")
+            elif (all_users[0]["wordcount"] + 1000) < required_today:
+                print("\nYou're falling behind.")
+            else:
+                print("\nYou're on target.")
+            print(f"\nTo stay on track, write {daily_average} words today.\n")
         else:
             print("\nYou ran out of time!")
-            print(f"You have {words_remaining} words remaining.")
+            print(f"You have {words_remaining} words remaining.\n")
     else:
-        print("You reached your 80,000 word goal!")
+        print("\nYou reached your 80,000 word goal!\n")
 
 
 def target_message(all_users):
