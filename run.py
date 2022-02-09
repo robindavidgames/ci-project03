@@ -55,20 +55,34 @@ def total_words(new_wordcount):
     # use a dictionary. each user can have username, total days, wordcount.
     # remove blank values to get total days.
 
-    # Select the list to work on.
-    current_list = data[0]
-    # Ignore the first entry.
-    list_splice = current_list[1:len(current_list) + 1]
+    all_users = []
+ 
+    for x in range(len(data)):
+        # Select the list to work on.
+        current_list = data[x]
 
-    # Convert all entries to int.
-    for i in range(len(list_splice)):
-        list_splice[i] = int(list_splice[i])
+        # Remove blank entries
+        while '' in current_list:
+            current_list.remove('')
 
-    # Sum entries plus today's entry.
-    total_count = sum(list_splice) + int(new_wordcount)
+        # Ignore the first entry.
+        list_splice = current_list[1:len(current_list) + 1]
 
-    # Move this to target_message and also give an average.
-    print(f"You have written a total of {total_count} words")
+        # Convert all entries to int.
+        for i in range(len(list_splice)):
+            list_splice[i] = int(list_splice[i])
+
+        # Sum entries plus today's entry (if current user).
+        if current_list == data[0]:
+            total_count = sum(list_splice) + int(new_wordcount)
+            # Move this to target_message and also give an average.
+            print(f"You have written a total of {total_count} words")
+        else:
+            total_count = sum(list_splice)
+
+        all_users.append({"user": current_list[0], "wordcount": total_count, "day": len(current_list)})
+
+    print(all_users)
 
 
 def validate_data(daily_word_count):
