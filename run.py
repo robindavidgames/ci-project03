@@ -42,7 +42,7 @@ def main():
 
     while menu_loop is True:
         print(
-            "\nChoose which action you would like to perform. (Type number 1-4)")
+            "\nChoose which action you would like to perform. (Number 1-4)")
         print("1. Add a new day's progress.")
         print("2. Update a previous day's progress.")
         print("3. See your daily goal.")
@@ -76,6 +76,7 @@ def log_day():
     """
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
+
     daily_word_count = input("Enter wordcount here: ")
 
     # Confirm data is integer. Restart log_day if not.
@@ -92,12 +93,36 @@ def prev_day():
     Passes value to validate_data() to validate.
     Passes current date to total_words()
     """
-    print("Update previous day")
+    validating_date = True
+    validating_wordcount = True
 
-    # day_to_update = input("Enter the date you wish to update: ")
-    # validate_data(day_to_update)
-    # updated_wordcount = input(f"Enter the corrected wordcount for day {day_to_update}: ")
-    # validate_data(updated_wordcount)
+    while validating_date:
+        day_to_update = input("Enter the date you wish to update: ")
+        try:
+            int(day_to_update)
+            print("Data is valid.\n")
+            validating_date = False
+        except ValueError:
+            print("\nData is invalid. You must input a whole number.")
+
+    while validating_wordcount:
+        updated_wordcount = input(f"Enter the corrected wordcount for day {day_to_update}: ")
+        try:
+            int(updated_wordcount)
+            print("Data is valid.\n")
+            validating_wordcount = False
+        except ValueError:
+            print("\nData is invalid. You must input a whole number.")
+
+
+# def int_check(submitted_value, valid_data):
+#     try:
+#         int(submitted_value)
+#         print("Data is valid.\n")
+#         valid_data = 2
+#         return valid_data
+#     except ValueError:
+#         print("\nData is invalid. You must input a whole number.")
 
 
 def see_progress():
@@ -185,7 +210,8 @@ def total_words(daily_word_count):
 def target_message(all_users):
     """
     Present a motivational message related to the user being on or off target.
-    Recieves list of dictionaries that contains progress for all users and pulls relevant data.
+    Recieves list of dictionaries that contains progress for all users and
+    pulls relevant data.
     Passes progress to see_target().
     """
     current_wordcount = all_users[0]["wordcount"]
@@ -198,8 +224,10 @@ def target_message(all_users):
 
 def see_target(all_users):
     """
-    Present the daily writing target, comparing to the 30 day deadline and 80000 word target.s
-    Recieves list of dictionaries that contains progress for all users and pulls relevant data.
+    Present the daily writing target, comparing to the 30 day deadline
+    and 80000 word target.
+    Recieves list of dictionaries that contains progress for all users
+    and pulls relevant data.
     """
     words_remaining = 80000 - all_users[0]["wordcount"]
     days_remaining = 30 - all_users[0]["day"]
