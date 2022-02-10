@@ -76,6 +76,8 @@ def log_day():
     """
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
+
+    # this needs to be done again if not valid, before update_worksheet.
     daily_word_count = input("Enter wordcount here: ")
 
     # Confirm data is integer.
@@ -118,7 +120,6 @@ def validate_data(daily_word_count):
     try:
         int(daily_word_count)
         print("Data is valid.\n")
-        return
     except ValueError:
         print("\nData is invalid. You must input a whole number.")
         log_day()
@@ -215,7 +216,14 @@ def see_target(all_users):
             print(f"You have {words_remaining} words remaining.\n")
     else:
         print("\nYou reached your 80,000 word goal!\n")
-    
+
+    restart()
+
+
+def restart():
+    """
+    Allows the user to return to the main menu.
+    """
     restart = input("Press Enter to return to the menu: ")
 
     if restart == "":
