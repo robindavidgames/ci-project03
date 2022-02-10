@@ -31,7 +31,6 @@ def see_target(all_users):
     """
     Present the daily writing target.
     Recieves list of dictionaries that contains progress for all users and pulls relevant data.
-    Receives progress from target_message().
     """
     words_remaining = 80000 - all_users[0]["wordcount"]
     days_remaining = 30 - all_users[0]["day"]
@@ -52,6 +51,12 @@ def see_target(all_users):
             print(f"You have {words_remaining} words remaining.\n")
     else:
         print("\nYou reached your 80,000 word goal!\n")
+    
+    restart = input("Press Enter to return to the menu: ")
+
+    if restart == "":
+        data = wordcount.get_all_values()
+        main()
 
 
 def target_message(all_users):
@@ -182,7 +187,7 @@ def main():
 
     while menu_loop is True:
         print(
-            "Choose which action you would like to perform. (Type number 1-4)")
+            "\nChoose which action you would like to perform. (Type number 1-4)")
         print("1. Add a new day's progress.")
         print("2. Update a previous day's progress.")
         print("3. See your daily goal.")
@@ -207,5 +212,5 @@ def main():
                 "\n Invalid choice. Please input a number between 1 and 4.\n")
 
 
-print("Welcome to your National Novel Writing Month progress tracker.\n")
+print("\nWelcome to your National Novel Writing Month progress tracker.")
 main()
