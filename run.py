@@ -76,11 +76,9 @@ def log_day():
     """
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
-
-    # this needs to be done again if not valid, before update_worksheet.
     daily_word_count = input("Enter wordcount here: ")
 
-    # Confirm data is integer.
+    # Confirm data is integer. Restart log_day if not.
     validate_data(daily_word_count)
 
     # Update worksheet. Second argument is name of the worksheet to update.
@@ -125,7 +123,7 @@ def validate_data(daily_word_count):
         log_day()
 
 
-def update_worksheet(new_wordcount, worksheet):
+def update_worksheet(daily_word_count, worksheet):
     """
     Updates the worksheet with the validated value.
     Heavily modified from Love Sandwiches.
@@ -137,20 +135,20 @@ def update_worksheet(new_wordcount, worksheet):
     current_day = len(data[0])
     column_to_update = current_day + 1
     worksheet_to_update.update_cell(
-        row_to_update, column_to_update, new_wordcount)
+        row_to_update, column_to_update, daily_word_count)
     print(f"A new daily log has been added to the {worksheet} worksheet.")
 
-    total_words(new_wordcount)
+    total_words(daily_word_count)
 
 
-def total_words(new_wordcount):
+def total_words(daily_word_count):
     """
     Present total number of words written.
     Recieves wordcount for the current date.
     Passes total words and current date to target_message().
     """
     all_users = []
- 
+
     for x in range(len(data)):
         # Select the list to work on.
         current_list = data[x]
@@ -159,8 +157,8 @@ def total_words(new_wordcount):
         while '' in current_list:
             current_list.remove('')
 
-        # Ignore the first entry.
-        list_splice = current_list[1:len(current_list) + 1]
+        # Ignore the first entry (as it is the username).
+        list_splice = current_list[1:len(current_list)]
 
         # Convert all entries to int.
         for i in range(len(list_splice)):
@@ -168,11 +166,17 @@ def total_words(new_wordcount):
 
         # Sum entries plus today's entry (if current user).
         if current_list == data[0]:
-            total_count = sum(list_splice) + int(new_wordcount)
+            total_count = sum(list_splice) + int(daily_word_count)
         else:
             total_count = sum(list_splice)
 
-        all_users.append({"user": current_list[0], "wordcount": total_count, "day": len(current_list)})
+        all_users.append(
+            {
+                "user": current_list[0],
+                "wordcount": total_count,
+                "day": len(current_list)
+            }
+        )
 
     target_message(all_users)
     see_target(all_users)
@@ -201,7 +205,7 @@ def see_target(all_users):
     days_remaining = 30 - all_users[0]["day"]
     daily_average = int(words_remaining / days_remaining)
     required_today = int((80000 / 30) * all_users[0]["day"])
-    
+
     if words_remaining > 0:
         if days_remaining >= 0:
             if (all_users[0]["wordcount"] - 1000) > required_today:
@@ -224,9 +228,9 @@ def restart():
     """
     Allows the user to return to the main menu.
     """
-    restart = input("Press Enter to return to the menu: ")
+    return_to_menu = input("Press Enter to return to the menu: ")
 
-    if restart == "":
+    if return_to_menu == "":
         data = wordcount.get_all_values()
         main()
 
