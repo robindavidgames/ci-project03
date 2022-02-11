@@ -77,10 +77,10 @@ def log_day():
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
 
-    daily_word_count = input("Enter wordcount here: ")
-
-    # Confirm data is integer. Restart log_day if not.
-    validate_data(daily_word_count)
+    x = True
+    while x == True:
+        daily_word_count = input("Enter wordcount here: ")
+        x = validate_data(daily_word_count) # Confirm data is integer.
 
     # Update worksheet. Second argument is name of the worksheet to update.
     update_worksheet(daily_word_count, "wordcount")
@@ -134,18 +134,19 @@ def see_progress():
     print("See progress")
 
 
-def validate_data(daily_word_count):
+def validate_data(data_to_validate):
     """
     Validates that data inputted by the user is an integer.
     Converts inputted data to integer if possible.
     Raises ValueError if value is not integer.
     """
     try:
-        int(daily_word_count)
+        int(data_to_validate)
         print("Data is valid.\n")
+        return False
     except ValueError:
         print("\nData is invalid. You must input a whole number.")
-        log_day()
+        return True
 
 
 def update_worksheet(daily_word_count, worksheet):

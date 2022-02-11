@@ -18,6 +18,21 @@ to this code:
 
     for i, value in enumerate(list_splice):
 
+## Validating Data
+I couldn't get my validate_data function to run correctly and check if inputted values were integers. I had created a while loop asking for an input and then within that while loop, would call validate_data(). Like this:
+
+    while x == True:
+        daily_word_count = input("Enter wordcount here: ")
+        validate_data(daily_word_count)
+
+But it didn't work! After some amount of searching forums, I asked for help on slack and was able to solve it. I hadn't assigned a varianble for validate_data() to assign its result.
+
+    while x == True:
+        daily_word_count = input("Enter wordcount here: ")
+        x = validate_data(daily_word_count)
+
+Having solved this, I was able to use validate_data() in all instances where I needed to check that inputted text was an integer.
+
 # Future Features
 ## Multiple Users
 By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
