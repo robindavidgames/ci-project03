@@ -99,6 +99,10 @@ def prev_day():
     while validating_date == True:
         day_to_update = input("Enter the date you wish to update: ")
         validating_date = validate_data(day_to_update)
+        # Check date is one that has been previously entered.
+        if validating_date == False and int(day_to_update) >= len(data[0]):
+            validating_date = True
+            print(f"You must enter a date no higher than {len(data[0])}.\n")
 
     while validating_wordcount == True:
         updated_wordcount = input(f"Enter the corrected wordcount for day {day_to_update}: ")
