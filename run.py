@@ -77,10 +77,10 @@ def log_day():
     print("\nEnter your wordcount for a new day.")
     print("This will create a new entry in your log.\n")
 
-    x = True
-    while x == True:
+    validating_choice = True
+    while validating_choice == True:
         daily_word_count = input("Enter wordcount here: ")
-        x = validate_data(daily_word_count) # Confirm data is integer.
+        validating_choice = validate_data(daily_word_count) # Confirm data is integer.
 
     # Update worksheet. Second argument is name of the worksheet to update.
     update_worksheet(daily_word_count, "wordcount")
@@ -96,33 +96,13 @@ def prev_day():
     validating_date = True
     validating_wordcount = True
 
-    while validating_date:
+    while validating_date == True:
         day_to_update = input("Enter the date you wish to update: ")
-        try:
-            int(day_to_update)
-            print("Data is valid.\n")
-            validating_date = False
-        except ValueError:
-            print("\nData is invalid. You must input a whole number.")
+        validating_date = validate_data(day_to_update)
 
-    while validating_wordcount:
+    while validating_wordcount == True:
         updated_wordcount = input(f"Enter the corrected wordcount for day {day_to_update}: ")
-        try:
-            int(updated_wordcount)
-            print("Data is valid.\n")
-            validating_wordcount = False
-        except ValueError:
-            print("\nData is invalid. You must input a whole number.")
-
-
-# def int_check(submitted_value, valid_data):
-#     try:
-#         int(submitted_value)
-#         print("Data is valid.\n")
-#         valid_data = 2
-#         return valid_data
-#     except ValueError:
-#         print("\nData is invalid. You must input a whole number.")
+        validating_wordcount = validate_data(updated_wordcount)
 
 
 def see_progress():
@@ -145,7 +125,7 @@ def validate_data(data_to_validate):
         print("Data is valid.\n")
         return False
     except ValueError:
-        print("\nData is invalid. You must input a whole number.")
+        print("\nData is invalid. You must input a whole number.\n")
         return True
 
 
