@@ -82,8 +82,12 @@ def log_day():
         daily_word_count = input("Enter wordcount here: ")
         validating_choice = validate_data(daily_word_count) # Confirm data is integer.
 
-    # Update worksheet. Second argument is name of the worksheet to update.
-    update_worksheet(daily_word_count, "wordcount")
+    # Determine which column/day to update in worksheet.
+    current_day = len(data[0])
+    column_to_update = current_day + 1
+
+    # Update worksheet. Third argument is name of the worksheet to update.
+    update_worksheet(column_to_update, daily_word_count, "wordcount")
 
 
 def prev_day():
@@ -105,8 +109,13 @@ def prev_day():
             print(f"You must enter a date no higher than {len(data[0])}.\n")
 
     while validating_wordcount == True:
-        updated_wordcount = input(f"Enter the corrected wordcount for day {day_to_update}: ")
-        validating_wordcount = validate_data(updated_wordcount)
+        updated_word_count = input(f"Enter the corrected wordcount for day {day_to_update}: ")
+        validating_wordcount = validate_data(updated_word_count)
+
+    # Determine which column/day to update in worksheet.
+    column_to_update = int(day_to_update) + 1
+
+    update_worksheet(column_to_update, updated_word_count, "wordcount")
 
 
 def see_progress():
@@ -133,7 +142,7 @@ def validate_data(data_to_validate):
         return True
 
 
-def update_worksheet(daily_word_count, worksheet):
+def update_worksheet(column_to_update, daily_word_count, worksheet):
     """
     Updates the worksheet with the validated value.
     Heavily modified from Love Sandwiches.
@@ -142,8 +151,9 @@ def update_worksheet(daily_word_count, worksheet):
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     row_to_update = 1
-    current_day = len(data[0])
-    column_to_update = current_day + 1
+    # Move these to other functions so they can be updated dynamically.
+    # current_day = len(data[0])
+    # column_to_update = current_day + 1
     worksheet_to_update.update_cell(
         row_to_update, column_to_update, daily_word_count)
     print(f"A new daily log has been added to the {worksheet} worksheet.")
