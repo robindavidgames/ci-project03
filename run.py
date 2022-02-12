@@ -69,26 +69,32 @@ def main():
 
 def log_day():
     """
-    Update daily writing log.
+    Update daily writing log, provided the use has been writing for less
+    than 31 days.
     Add a new line to the worksheet to represent the current day.
     Passes value to validate_data() to validate.
     Passes current date to total_words().
     """
-    print("\nEnter your wordcount for a new day.")
-    print("This will create a new entry in your log.\n")
+    if len(data[0]) > 31:
+        print("\nYou have already been writing for 30 days!")
+        print("National Novel Writing Month has finished.")
+        total_words(0)
+    else:
+        print("\nEnter your wordcount for a new day.")
+        print("This will create a new entry in your log.\n")
 
-    validating_choice = True
-    while validating_choice:
-        daily_word_count = input("Enter wordcount here: ")
-        # Confirm data is integer.
-        validating_choice = validate_data(daily_word_count)
+        validating_choice = True
+        while validating_choice:
+            daily_word_count = input("Enter wordcount here: ")
+            # Confirm data is integer.
+            validating_choice = validate_data(daily_word_count)
 
-    # Determine which column/day to update in worksheet.
-    current_day = len(data[0])
-    column_to_update = current_day + 1
+        # Determine which column/day to update in worksheet.
+        current_day = len(data[0])
+        column_to_update = current_day + 1
 
-    # Update worksheet. Third argument is name of the worksheet to update.
-    update_worksheet(column_to_update, daily_word_count, "wordcount")
+        # Update worksheet. Third argument is name of the worksheet to update.
+        update_worksheet(column_to_update, daily_word_count, "wordcount")
 
 
 def prev_day():
@@ -241,7 +247,7 @@ def target_message(all_users):
     current_wordcount = all_users[0]["wordcount"]
     print(f"\nYou have written a total of {current_wordcount} words.")
     average_wordcount = int(current_wordcount / all_users[0]["day"])
-    print(f"\nEach day, you write an average of {average_wordcount} words.")
+    print(f"\nYou write an average of {average_wordcount} words per day.")
 
     return
 
