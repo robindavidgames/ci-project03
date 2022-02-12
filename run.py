@@ -124,7 +124,16 @@ def see_progress():
     Print the values for all dates input so far.
     Passes current date to total_words()
     """
-    print("See progress")
+    print("Your daily writing progress:")
+
+    # Ignore the first entry (as it is the username).
+    current_user = data[0]
+    user_progress = current_user[1:len(current_user)]
+
+    print(user_progress)
+
+    for words in range(len(user_progress)):
+        print(f"Day {words + 1}: {user_progress[words]} words")
 
 
 def validate_data(data_to_validate):
