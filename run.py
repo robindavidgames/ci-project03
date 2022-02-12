@@ -34,10 +34,6 @@ def main():
     Provide 4 options to user:
     log update; change previous log; see daily goal; see all progress.
     """
-
-    # Check spreadsheet is connected to python
-    print(data)
-
     menu_loop = True
 
     while menu_loop:
@@ -170,7 +166,6 @@ def validate_data(data_to_validate):
     """
     try:
         int(data_to_validate)
-        print("Data is valid.\n")
         return False
     except ValueError:
         print("\nData is invalid. You must input a whole number.\n")
@@ -186,9 +181,6 @@ def update_worksheet(column_to_update, daily_word_count, worksheet):
     print(f"Updating {worksheet} worksheet...\n")
     worksheet_to_update = SHEET.worksheet(worksheet)
     row_to_update = 1
-    # Move these to other functions so they can be updated dynamically.
-    # current_day = len(data[0])
-    # column_to_update = current_day + 1
     worksheet_to_update.update_cell(
         row_to_update, column_to_update, daily_word_count)
     print(f"A new daily log has been added to the {worksheet} worksheet.")
@@ -254,9 +246,8 @@ def target_message(all_users):
     # See README for credits.
     ranked_dictionary = all_users
     ranked_dictionary.sort(key=operator.itemgetter("wordcount"))
-    print(ranked_dictionary)
     user_position = [i for i, d in enumerate(ranked_dictionary) if 'User 1' in d.values()]
-    print(f"\nYou are in position {user_position[0] + 1} out of {len(all_users)}.")
+    print(f"\nYou are in position {user_position[0] + 1} out of {len(all_users)} users.")
 
     return
 
@@ -296,8 +287,6 @@ def restart():
     Allows the user to return to the main menu.
     """
     input("Press Enter to return to the menu: ")
-    # Ensure data contains any newly added value before continuing.
-    # data = wordcount.get_all_values()
     main()
 
 
