@@ -27,9 +27,6 @@ wordcount = SHEET.worksheet('wordcount')
 
 data = wordcount.get_all_values()
 
-# Check spreadsheet is connected to python
-print(data)
-
 
 def main():
     """
@@ -37,6 +34,9 @@ def main():
     Provide 4 options to user:
     log update; change previous log; see daily goal; see all progress.
     """
+
+    # Check spreadsheet is connected to python
+    print(data)
 
     menu_loop = True
 
@@ -286,11 +286,10 @@ def restart():
     """
     Allows the user to return to the main menu.
     """
-    return_to_menu = input("Press Enter to return to the menu: ")
-
-    if return_to_menu == "":
-        data = wordcount.get_all_values()
-        main()
+    input("Press Enter to return to the menu: ")
+    # Ensure data contains any newly added value before continuing.
+    # data = wordcount.get_all_values()
+    main()
 
 
 print("\nWelcome to your National Novel Writing Month progress tracker.")
