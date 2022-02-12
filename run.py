@@ -2,9 +2,6 @@
 Program to track a single user's writing progress for National Novel Writing
 Month.
 """
-
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 # gspread is used to read and write data in a google sheet.
 import gspread
 from google.oauth2.service_account import Credentials
@@ -69,7 +66,7 @@ def log_day():
     than 31 days.
     Add a new line to the worksheet to represent the current day.
     Passes value to validate_data() to validate.
-    Passes current date to total_words().
+    Passes current date, wordcount, and worksheet to update_worksheet().
     """
     if len(data[0]) > 31:
         print("\nYou have already been writing for 30 days!")
@@ -97,8 +94,8 @@ def prev_day():
     """
     Update a previous daily writing log.
     Allow user to input a previous date and then change the value in that date.
-    Passes value to validate_data() to validate.
-    Passes current date to total_words()
+    Passes date and wordcount value to validate_data() to validate.
+    Passes current date, wordcount, and worksheet to update_worksheet().
     """
     validating_date = True
     validating_wordcount = True
@@ -127,7 +124,7 @@ def see_progress():
     """
     See all progress made so far.
     Print the values for all dates input so far.
-    Passes current date to total_words()
+    Passes a 0 value to total_words() (as no words are being added to the wordcount).
     """
     print("Your daily writing progress:")
 
@@ -190,9 +187,8 @@ def update_worksheet(column_to_update, daily_word_count, worksheet):
 
 def total_words(daily_word_count):
     """
-    Present total number of words written.
-    Recieves wordcount for the current date.
-    Passes total words and current date to target_message().
+    Creates a dictionary of all users' usernames, words written, & days completed.
+    Passes dictionary to target_message() and see_target() for more analysis.
     """
     all_users = []
 
@@ -207,7 +203,7 @@ def total_words(daily_word_count):
         # Ignore the first entry (as it is the username).
         list_splice = current_list[1:len(current_list)]
 
-        # Convert all entries to int.
+        # Convert all entries to integers.
         for i in range(len(list_splice)):
             list_splice[i] = int(list_splice[i])
 
@@ -231,9 +227,9 @@ def total_words(daily_word_count):
 
 def target_message(all_users):
     """
-    Present a motivational message related to the user being on or off target.
     Recieves list of dictionaries that contains progress for all users and
     pulls relevant data.
+    Present a motivational message related to the user being on or off target.
     Ranks all users by sorting dictionary by "wordcount" and informs user of
     their position.
     """
