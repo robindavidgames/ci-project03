@@ -44,8 +44,10 @@ In see_progress(), I needed to limit the number of pieces of data shown on the t
 By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
 
 # Credits
-How to set up google drive and google sheets API from the Love Sanwiches project.
+How to set up google drive and google sheets API is from the Love Sanwiches project.
 Used gspread documentation to learn how update a googlesheet https://buildmedia.readthedocs.org/media/pdf/gspread/latest/gspread.pdf
+The code used to sort the dictionary in target_message is modified from https://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary
+The code used to find the location of the current user in that sorted dictionary is modified from https://stackoverflow.com/questions/4391697/find-the-index-of-a-dict-within-a-list-by-matching-the-dicts-value
 
 
 

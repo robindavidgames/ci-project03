@@ -9,8 +9,8 @@ Month.
 import gspread
 from google.oauth2.service_account import Credentials
 
-# operator is used to sort list of dictionaries.
-# import operator
+# operator is used to sort list of dictionaries in target_message().
+import operator
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -242,12 +242,21 @@ def target_message(all_users):
     Present a motivational message related to the user being on or off target.
     Recieves list of dictionaries that contains progress for all users and
     pulls relevant data.
-    Passes progress to see_target().
+    Ranks all users by sorting dictionary by "wordcount" and informs user of
+    their position.
     """
     current_wordcount = all_users[0]["wordcount"]
     print(f"\nYou have written a total of {current_wordcount} words.")
     average_wordcount = int(current_wordcount / all_users[0]["day"])
     print(f"\nYou write an average of {average_wordcount} words per day.")
+
+    # Rank all the users in the dictionary.
+    # See README for credits.
+    ranked_dictionary = all_users
+    ranked_dictionary.sort(key=operator.itemgetter("wordcount"))
+    print(ranked_dictionary)
+    user_position = [i for i, d in enumerate(ranked_dictionary) if 'User 1' in d.values()]
+    print(f"\nYou are in position {user_position[0] + 1} out of {len(all_users)}.")
 
     return
 
@@ -261,7 +270,7 @@ def see_target(all_users):
     """
     words_remaining = 80000 - all_users[0]["wordcount"]
     days_remaining = 30 - all_users[0]["day"]
-    daily_average = int(words_remaining / days_remaining)
+    average_needed = int(words_remaining / days_remaining)
     required_today = int((80000 / 30) * all_users[0]["day"])
 
     if words_remaining > 0:
@@ -272,7 +281,7 @@ def see_target(all_users):
                 print("\nYou're falling behind.")
             else:
                 print("\nYou're on target.")
-            print(f"\nTo stay on track, write {daily_average} words today.\n")
+            print(f"\nTo stay on track, write {average_needed} words today.\n")
         else:
             print("\nYou ran out of time!")
             print(f"You have {words_remaining} words remaining.\n")
