@@ -80,7 +80,8 @@ def log_day():
     validating_choice = True
     while validating_choice:
         daily_word_count = input("Enter wordcount here: ")
-        validating_choice = validate_data(daily_word_count) # Confirm data is integer.
+        # Confirm data is integer.
+        validating_choice = validate_data(daily_word_count)
 
     # Determine which column/day to update in worksheet.
     current_day = len(data[0])
@@ -109,7 +110,9 @@ def prev_day():
             print(f"You must enter a date of {len(data[0]) - 1} or lower.\n")
 
     while validating_wordcount:
-        updated_word_count = input(f"Enter the corrected wordcount for day {day_to_update}: ")
+        updated_word_count = input(
+            f"Enter the corrected wordcount for day {day_to_update}: "
+        )
         validating_wordcount = validate_data(updated_word_count)
 
     # Determine which column/day to update in worksheet.
@@ -132,8 +135,11 @@ def see_progress():
 
     print(user_progress)
 
-    for words in range(len(user_progress)):
-        print(f"Day {words + 1}: {user_progress[words]} words")
+    if len(user_progress) < 21:
+        for words in range(len(user_progress)):
+            print(f"Day {words + 1}: {user_progress[words]} words")
+    else:
+        pass
 
 
 def validate_data(data_to_validate):
@@ -178,9 +184,9 @@ def total_words(daily_word_count):
     """
     all_users = []
 
-    for x in range(len(data)):
+    for user in range(len(data)):
         # Select the list to work on.
-        current_list = data[x]
+        current_list = data[user]
 
         # Remove blank entries
         while '' in current_list:
