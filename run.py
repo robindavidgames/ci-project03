@@ -135,11 +135,25 @@ def see_progress():
 
     print(user_progress)
 
+    # To avoid going over the terminal height, if number of days is < 21
+    # print as normal. If > 21, break into 3 sections of 10 (max days is 30)
+    # and output when the user presses Enter.
     if len(user_progress) < 21:
         for words in range(len(user_progress)):
             print(f"Day {words + 1}: {user_progress[words]} words")
     else:
-        pass
+        for words in range(10):
+            print(f"Day {words + 1}: {user_progress[words]} words")
+        input("Press Enter to continue: ")
+        for words in range(10, 20):
+            print(f"Day {words + 1}: {user_progress[words]} words")
+        input("Press Enter to continue: ")
+        for words in range(20, len(user_progress)):
+            print(f"Day {words + 1}: {user_progress[words]} words")
+
+    input("Press Enter to continue: ")
+
+    total_words(0)
 
 
 def validate_data(data_to_validate):
