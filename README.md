@@ -33,6 +33,12 @@ But it didn't work! After some amount of searching forums, I asked for help on s
 
 Having solved this, I was able to use validate_data() in all instances where I needed to check that inputted text was an integer.
 
+## Managing Range of Iteration
+In see_progress(), I needed to limit the number of pieces of data shown on the terminal (as there could be up to 30 pieces of data and the terminal is only 24 lines in height). As such a range set to len(data) did not work. When I tried setting the range to manual number (eg 20-30), it would result in a crash if there was less than 30 pieces of data (ie, if there were 28 days logged). To fix this error, I set the minimum at 20 and the maximum as len(data), so that the maximum boundary would be variable.
+
+    for words in range(20, len(user_progress)):
+        print(f"Day {words + 1}: {user_progress[words]} words")
+
 # Future Features
 ## Multiple Users
 By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
