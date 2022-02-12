@@ -40,7 +40,7 @@ def main():
 
     menu_loop = True
 
-    while menu_loop is True:
+    while menu_loop:
         print(
             "\nChoose which action you would like to perform. (Number 1-4)")
         print("1. Add a new day's progress.")
@@ -78,7 +78,7 @@ def log_day():
     print("This will create a new entry in your log.\n")
 
     validating_choice = True
-    while validating_choice == True:
+    while validating_choice:
         daily_word_count = input("Enter wordcount here: ")
         validating_choice = validate_data(daily_word_count) # Confirm data is integer.
 
@@ -100,15 +100,15 @@ def prev_day():
     validating_date = True
     validating_wordcount = True
 
-    while validating_date == True:
+    while validating_date:
         day_to_update = input("Enter the date you wish to update: ")
         validating_date = validate_data(day_to_update)
         # Check date is one that has been previously entered.
-        if validating_date == False and int(day_to_update) >= len(data[0]):
+        if validating_date is False and int(day_to_update) >= len(data[0]):
             validating_date = True
-            print(f"You must enter a date no higher than {len(data[0])}.\n")
+            print(f"You must enter a date of {len(data[0]) - 1} or lower.\n")
 
-    while validating_wordcount == True:
+    while validating_wordcount:
         updated_word_count = input(f"Enter the corrected wordcount for day {day_to_update}: ")
         validating_wordcount = validate_data(updated_word_count)
 
