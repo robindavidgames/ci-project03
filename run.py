@@ -124,7 +124,8 @@ def see_progress():
     """
     See all progress made so far.
     Print the values for all dates input so far.
-    Passes a 0 value to total_words() (as no words are being added to the wordcount).
+    Passes a 0 value to total_words() (as no words are being added to the
+    wordcount).
     """
     print("Your daily writing progress:")
 
@@ -187,7 +188,8 @@ def update_worksheet(column_to_update, daily_word_count, worksheet):
 
 def total_words(daily_word_count):
     """
-    Creates a dictionary of all users' usernames, words written, & days completed.
+    Creates a dictionary of all users' usernames, words written, & days
+    completed.
     Passes dictionary to target_message() and see_target() for more analysis.
     """
     all_users = []
@@ -242,8 +244,11 @@ def target_message(all_users):
     # See README for credits.
     ranked_dictionary = all_users
     ranked_dictionary.sort(key=operator.itemgetter("wordcount"))
-    user_position = [i for i, d in enumerate(ranked_dictionary) if 'User 1' in d.values()]
-    print(f"\nYou are in position {user_position[0] + 1} out of {len(all_users)} users.")
+    user_position = [
+        i for i, d in enumerate(ranked_dictionary) if 'User 1' in d.values()]
+    real_position = user_position[0] + 1
+    print(
+        f"\nYou are in position {real_position} out of {len(all_users)} users.")
 
     return
 

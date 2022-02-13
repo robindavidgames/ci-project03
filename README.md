@@ -41,7 +41,7 @@ In see_progress(), I needed to limit the number of pieces of data shown on the t
 
 # Future Features
 ## Multiple Users
-By updating row_to_update in update_worksheet(), it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
+By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
 
 # Credits
 How to set up google drive and google sheets API is from the Love Sanwiches project.
