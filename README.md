@@ -1,11 +1,35 @@
 Readme
 
-National Novel Writing Month is a yearly event in which people attempt to write an 80000 word novel in the month of November. The event puts a lot of emphasis on daily word counts and reaching goals. The purpose of this piece of software is to provide a way for a user to track their daily writing progress, to see if they are on target, and what they need to do to stay on target or to catch up with their goals if they have fallen behind. It uses a googlesheet to hold information.
+National Novel Writing Month (NaNoWriMo) is a yearly event in which people attempt to write an 80000 word novel in the month of November. The event puts a lot of emphasis on daily word counts and reaching goals.
 
+The purpose of this piece of software is to provide a way for a user to track their daily writing progress. The user can see if they are on target, what they need to do to stay on target, and how to catch up with their goals if they have fallen behind.
+
+It uses a googlesheet to hold information, but all data is processed within the program.
+
+# Flow of Operations
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
 # Features
-* The total words function creates a dictionary of all users, containing username, word count, and current day. This is to allow the program to compare user performance. 
+
+## Google Sheets
+A Google Sheets document hosts information relating to 10 fictional users. This information is imported whenever the program is run and can be added to and updated through user actions. The default user is User 1/Row 1 in the Google Sheet.
+![Google Sheet relating to NaNoWriMo tracker](./assets/readme/googlesheet.png)
+
+## main()
+The main() function allows the player to choose which action they would like to perform:
+
+* Add a new day's progress.
+* Update a previous day's progress.
+* See your daily goal.
+* See all your progress.
+
+It uses a very simple if/elif/else series to check if the user has inputted an appopriate choice and to send them to the correct function.
+
+## Log Day
+The log_day() function allows the user to post a new day's worth of writing progress. It automatically updates the next blank day and will not let the user input more than 30 days (as that is the maximum allows in the National Novel Writing Month challenge). It calls a validation function to check the inputted value and then sends the validated data, along with the date, to a function to update the worksheet.
+
+## total_words()
+The total words function creates a dictionary of all users, containing username, word count, and current day. This is to allow the program to compare user performance. 
 
 # Bugs and Issues
 
@@ -56,10 +80,21 @@ This is easier for a human reader to parse.
 ## Multiple Users
 By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
 
+# Software Used
+* GitPod to edit code.
+* GitHub to host code.
+* LucidChart to build flow of operations diagram.
+* Firefox browser.
+* Heroku to deploy code.
+* Google Sheets to host user progress values.
+
 # Credits
 How to set up google drive and google sheets API is from the Love Sanwiches project.
+
 Used gspread documentation to learn how update a googlesheet https://buildmedia.readthedocs.org/media/pdf/gspread/latest/gspread.pdf
+
 The code used to sort the dictionary in target_message is modified from https://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary
+
 The code used to find the location of the current user in that sorted dictionary is modified from https://stackoverflow.com/questions/4391697/find-the-index-of-a-dict-within-a-list-by-matching-the-dicts-value
 
 
