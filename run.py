@@ -133,14 +133,12 @@ def see_progress():
     current_user = data[0]
     user_progress = current_user[1:len(current_user)]
 
-    print(user_progress)
-
     # To avoid going over the terminal height, if number of days is < 21
     # print as normal. If > 21, break into 3 sections of 10 (max days is 30)
     # and output when the user presses Enter.
     if len(user_progress) < 21:
-        for words in range(len(user_progress)):
-            print(f"Day {words + 1}: {user_progress[words]} words")
+        for day, daily_words in enumerate(user_progress):
+            print(f"Day {day + 1}: {daily_words} words")
     else:
         for words in range(10):
             print(f"Day {words + 1}: {user_progress[words]} words")
@@ -196,12 +194,6 @@ def total_words(daily_word_count):
 
     # for user in range(len(data)):
     for user, current_list in enumerate(data):
-        # Select the list to work on.
-        # current_list = data[user]
-        # current_list = value
-        # print(value)
-        # print(current_list)
-
         # Remove blank entries
         while '' in current_list:
             current_list.remove('')
@@ -210,9 +202,6 @@ def total_words(daily_word_count):
         list_splice = current_list[1:len(current_list)]
 
         # Convert all entries to integers.
-        # for i in range(len(list_splice)):
-            # list_splice[i] = int(list_splice[i])
-
         for value, user_words in enumerate(list_splice):
             list_splice[value] = int(user_words)
 
