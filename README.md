@@ -16,6 +16,7 @@ Here is the link to the deployed program: https://nanowrimo-tracker.herokuapp.co
 
 ## Google Sheets
 A Google Sheets document hosts information relating to 10 fictional users. This information is imported whenever the program is run and can be added to and updated through user actions. The default user is User 1/Row 1 in the Google Sheet.
+
 ![Google Sheet relating to NaNoWriMo tracker](./assets/readme/googlesheet.png)
 
 ## main()
@@ -28,6 +29,8 @@ The main() function allows the player to choose which action they would like to 
 
 It uses a very simple if/elif/else series to check if the user has inputted an appopriate choice and to send them to the correct function.
 
+![Main menu of app](./assets/readme/feature1.png)
+
 ## Log Day
 The log_day() function allows the user to post a new day's worth of writing progress. It automatically updates the next blank day and will not let the user input more than 30 days (as that is the maximum allows in the National Novel Writing Month challenge). It calls a validation function to check the inputted value and then sends the validated data, along with the date, to a function to update the worksheet.
 
@@ -36,6 +39,8 @@ The previous_day() function allows the user to go back and change historical dat
 
 ## See Progress
 The see_progress() function outputs the values assigned to all days that have been saved. It checks the number of days, to ensure they can all fit in the terminal display and, if they cannot, breaks them into chunks for display.
+
+![All progress of one user, shown in the app.](./assets/readme/feature3.png)
 
 ## Data Validation
 The validate_data() function is called from several other functions and uses try/except to ensure that any inputted data is an integer. If the data isn't an integer, validate_data() provides an error message.
@@ -62,6 +67,8 @@ The target_message() function uses the dictionary of all users to convey some ke
 
 ## User Goals
 The see_target() function determines if the user is ahead or behind of their target to hit 80000 words by the end of the month. Depending on user progress, it provides a relevant motivational message, and offers a target word count for the next day in order to stay on track. It can also determine if the user has finished the 80000 word challenge.
+
+![Goals and progress shown in the app.](./assets/readme/feature2.png)
 
 ## Restarting
 The restart() function sends the user back to main() once they have finished their actions.
