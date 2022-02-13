@@ -6,6 +6,9 @@ The purpose of this piece of software is to provide a way for a user to track th
 
 It uses a googlesheet to hold information, but all data is processed within the program.
 
+# Deployed Program
+Here is the link to the deployed program: https://nanowrimo-tracker.herokuapp.com/
+
 # Flow of Operations
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
 
@@ -122,27 +125,25 @@ Created a new app and gave it a name.
 
 ![Create a new app on Heroku.](./assets/readme/deploy4.png)
 
-![Create a new app on Heroku.](./assets/readme/deploy5.png)
+![Naming an app on Heroku.](./assets/readme/deploy5.png)
 
 In the settings tab, I updated the Config Vars by adding CREDS and PORT keys and values.
 
-![Create a new app on Heroku.](./assets/readme/deploy6.png)
-
-![Create a new app on Heroku.](./assets/readme/deploy7.png)
+![Updating config vars on Heroku.](./assets/readme/deploy7.png)
 
 I added the Python and Nodejs buildpacks.
 
-![Create a new app on Heroku.](./assets/readme/deploy8.png)
+![Updating buildpacks on Heroku.](./assets/readme/deploy8.png)
 
 In the deploy section, I connected to GitHub and the appropriate project.
 
-![Create a new app on Heroku.](./assets/readme/deploy9.png)
+![Connecting to GitHub on Heroku.](./assets/readme/deploy9.png)
 
 Pressing "Deploy Branch" deploys the code to Heroku.
 
-![Create a new app on Heroku.](./assets/readme/deploy11.png)
+![App deploying on Heroku.](./assets/readme/deploy11.png)
 
-![Create a new app on Heroku.](./assets/readme/deploy12.png)
+![App deployed on Heroku.](./assets/readme/deploy12.png)
 
 # Software Used
 * GitPod to edit code.
@@ -161,38 +162,3 @@ Used gspread documentation to learn how update a googlesheet https://buildmedia.
 The code used to sort the dictionary in target_message is modified from https://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary
 
 The code used to find the location of the current user in that sorted dictionary is modified from https://stackoverflow.com/questions/4391697/find-the-index-of-a-dict-within-a-list-by-matching-the-dicts-value
-
-
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome robindavidgames,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
