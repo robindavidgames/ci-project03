@@ -28,8 +28,40 @@ It uses a very simple if/elif/else series to check if the user has inputted an a
 ## Log Day
 The log_day() function allows the user to post a new day's worth of writing progress. It automatically updates the next blank day and will not let the user input more than 30 days (as that is the maximum allows in the National Novel Writing Month challenge). It calls a validation function to check the inputted value and then sends the validated data, along with the date, to a function to update the worksheet.
 
-## total_words()
-The total words function creates a dictionary of all users, containing username, word count, and current day. This is to allow the program to compare user performance. 
+## Update Previous Day
+The previous_day() function allows the user to go back and change historical data. It requests a date and a corrected wordcount from the user, calls the validation function to check the values, and sends all that data to a function to update the worksheet.
+
+## See Progress
+The see_progress() function outputs the values assigned to all days that have been saved. It checks the number of days, to ensure they can all fit in the terminal display and, if they cannot, breaks them into chunks for display.
+
+## Data Validation
+The validate_data() function is called from several other functions and uses try/except to ensure that any inputted data is an integer. If the data isn't an integer, validate_data() provides an error message.
+
+    try:
+        int(data_to_validate)
+        return False
+    except ValueError:
+        print("\nData is invalid. You must input a whole number.\n")
+        return True
+
+## Updating Worksheet
+The update_worksheet() function can be called from log_day() or previous_day() and will update the Google Sheet with new values. validate_data() ensured these values are appropriate.
+
+## Users Dictionary
+The total_words() function creates a dictionary of all users, containing username, word count, and current day. It passes this dictionary to other functions so that the details can be analysed and the user can be presented with relevant statistics.
+
+## User Progress
+The target_message() function uses the dictionary of all users to convey some key information to the user:
+
+* How many words they have written.
+* How many words they write on an average day.
+* How they rank in comparrison to all other users.
+
+## User Goals
+The see_target() function determines if the user is ahead or behind of their target to hit 80000 words by the end of the month. Depending on user progress, it provides a relevant motivational message, and offers a target word count for the next day in order to stay on track. It can also determine if the user has finished the 80000 word challenge.
+
+## Restarting
+The restart() function sends the user back to main() once they have finished their actions.
 
 # Bugs and Issues
 
