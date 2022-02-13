@@ -2,12 +2,12 @@
 Program to track a single user's writing progress for National Novel Writing
 Month.
 """
+# operator is used to sort list of dictionaries in target_message().
+import operator
+
 # gspread is used to read and write data in a google sheet.
 import gspread
 from google.oauth2.service_account import Credentials
-
-# operator is used to sort list of dictionaries in target_message().
-import operator
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
