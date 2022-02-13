@@ -41,7 +41,7 @@ def main():
         print("3. See your daily goal.")
         print("4. See all your progress.\n")
 
-        choice = input("Your choice: ")
+        choice = input("Your choice: \n")
 
         if choice == "1":
             menu_loop = False
@@ -78,7 +78,7 @@ def log_day():
 
         validating_choice = True
         while validating_choice:
-            daily_word_count = input("Enter wordcount here: ")
+            daily_word_count = input("Enter wordcount here: \n")
             # Confirm data is integer.
             validating_choice = validate_data(daily_word_count)
 
@@ -101,7 +101,7 @@ def prev_day():
     validating_wordcount = True
 
     while validating_date:
-        day_to_update = input("Enter the date you wish to update: ")
+        day_to_update = input("Enter the date you wish to update: \n")
         validating_date = validate_data(day_to_update)
         # Check date is one that has been previously entered.
         if validating_date is False and int(day_to_update) >= len(data[0]):
@@ -110,7 +110,7 @@ def prev_day():
 
     while validating_wordcount:
         updated_word_count = input(
-            f"Enter the corrected wordcount for day {day_to_update}: "
+            f"Enter the corrected wordcount for day {day_to_update}: \n"
         )
         validating_wordcount = validate_data(updated_word_count)
 
@@ -142,14 +142,14 @@ def see_progress():
     else:
         for words in range(10):
             print(f"Day {words + 1}: {user_progress[words]} words")
-        input("Press Enter to continue: ")
+        input("Press Enter to continue: \n")
         for words in range(10, 20):
             print(f"Day {words + 1}: {user_progress[words]} words")
-        input("Press Enter to continue: ")
+        input("Press Enter to continue: \n")
         for words in range(20, len(user_progress)):
             print(f"Day {words + 1}: {user_progress[words]} words")
 
-    input("Press Enter to continue: ")
+    input("Press Enter to continue: \n")
 
     total_words(0)
 
@@ -284,7 +284,7 @@ def restart():
     """
     Allows the user to return to the main menu.
     """
-    input("Press Enter to return to the menu: ")
+    input("Press Enter to return to the menu: \n")
     main()
 
 
