@@ -48,7 +48,7 @@ The validate_data() function is called from several other functions and uses try
 The update_worksheet() function can be called from log_day() or previous_day() and will update the Google Sheet with new values. validate_data() ensured these values are appropriate.
 
 ## Users Dictionary
-The total_words() function creates a dictionary of all users, containing username, word count, and current day. It passes this dictionary to other functions so that the details can be analysed and the user can be presented with relevant statistics.
+The total_words() function creates a list of dictionaries covering all users, containing usernames, word counts, and current days. It passes this dictionary to other functions so that the details can be analysed and the user can be presented with relevant statistics.
 
 ## User Progress
 The target_message() function uses the dictionary of all users to convey some key information to the user:
@@ -64,15 +64,6 @@ The see_target() function determines if the user is ahead or behind of their tar
 The restart() function sends the user back to main() once they have finished their actions.
 
 # Bugs and Issues
-
-## Enumerating (remove this)
-When creating a loop to iterate through a list, I used a range function. Gitpod suggested I try to enumerate to create cleaner code. I used resources at https://dev.to/wangonya/when-to-use-python-s-enumerate-instead-of-range-in-loops-3e03 to change this code:
-
-    for i in range(len(list_splice)):
-
-to this code:
-
-    for i, value in enumerate(list_splice):
 
 ## Validating Data
 I couldn't get my validate_data function to run correctly and check if inputted values were integers. I had created a while loop asking for an input and then within that while loop, would call validate_data(). Like this:
@@ -110,7 +101,7 @@ This is easier for a human reader to parse.
 
 # Future Features
 ## Multiple Users
-By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
+By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row and all are contained in the same list of dictionaries.
 
 # Software Used
 * GitPod to edit code.
@@ -119,6 +110,7 @@ By updating row_to_update in update_worksheet(), etc., it would be possible to c
 * Firefox browser.
 * Heroku to deploy code.
 * Google Sheets to host user progress values.
+* Python
 
 # Credits
 How to set up google drive and google sheets API is from the Love Sanwiches project.
