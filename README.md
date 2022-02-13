@@ -7,7 +7,7 @@ The purpose of this piece of software is to provide a way for a user to track th
 It uses a googlesheet to hold information, but all data is processed within the program.
 
 # Deployed Program
-Here is the link to the deployed program: https://nanowrimo-tracker.herokuapp.com/
+[Here is the link to the deployed program.](https://nanowrimo-tracker.herokuapp.com/)
 
 # Flow of Operations
 ![Flow chart of operations](./assets/readme/NaNoWritMo-flow-chart.png)
@@ -97,7 +97,7 @@ In see_progress(), I needed to limit the number of pieces of data shown on the t
         print(f"Day {words + 1}: {user_progress[words]} words")
 
 ## Using Enumerate instead of For loops with len and range
-Although my code worked fine, GitPod was giving a warning that for loops with len and range in them are not ideal and suggested I Enumerate. I used the tutorial here https://realpython.com/python-enumerate/ to learn about enumerating and turned this code:
+Although my code worked fine, GitPod was giving a warning that for loops with len and range in them are not ideal and suggested I Enumerate. I used the tutorial at [RealPython](https://realpython.com/python-enumerate/) to learn about enumerating and turned this code:
 
     for i in range(len(list_splice)):
         list_splice[i] = int(list_splice[i])
@@ -164,8 +164,8 @@ Pressing "Deploy Branch" deploys the code to Heroku.
 # Credits
 How to set up google drive and google sheets API is from the Love Sanwiches project.
 
-Used gspread documentation to learn how update a googlesheet https://buildmedia.readthedocs.org/media/pdf/gspread/latest/gspread.pdf
+Used [gspread documentation](https://buildmedia.readthedocs.org/media/pdf/gspread/latest/gspread.pdf) to learn how update a googlesheet. 
 
-The code used to sort the dictionary in target_message is modified from https://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary
+The code used to sort the dictionary in target_message is modified from a [StackOverflow thread](https://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-a-value-of-the-dictionary).
 
-The code used to find the location of the current user in that sorted dictionary is modified from https://stackoverflow.com/questions/4391697/find-the-index-of-a-dict-within-a-list-by-matching-the-dicts-value
+The code used to find the location of the current user in that sorted dictionary is modified from a [StackOverflow thread](https://stackoverflow.com/questions/4391697/find-the-index-of-a-dict-within-a-list-by-matching-the-dicts-value).
