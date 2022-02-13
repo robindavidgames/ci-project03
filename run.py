@@ -194,9 +194,13 @@ def total_words(daily_word_count):
     """
     all_users = []
 
-    for user in range(len(data)):
+    # for user in range(len(data)):
+    for user, current_list in enumerate(data):
         # Select the list to work on.
-        current_list = data[user]
+        # current_list = data[user]
+        # current_list = value
+        # print(value)
+        # print(current_list)
 
         # Remove blank entries
         while '' in current_list:
@@ -206,8 +210,11 @@ def total_words(daily_word_count):
         list_splice = current_list[1:len(current_list)]
 
         # Convert all entries to integers.
-        for i in range(len(list_splice)):
-            list_splice[i] = int(list_splice[i])
+        # for i in range(len(list_splice)):
+            # list_splice[i] = int(list_splice[i])
+
+        for value, user_words in enumerate(list_splice):
+            list_splice[value] = int(user_words)
 
         # Sum entries plus today's entry (if current user).
         if current_list == data[0]:
@@ -248,7 +255,8 @@ def target_message(all_users):
         i for i, d in enumerate(ranked_dictionary) if 'User 1' in d.values()]
     real_position = user_position[0] + 1
     print(
-        f"\nYou are in position {real_position} out of {len(all_users)} users.")
+        f"\nYou are in position {real_position} out of {len(all_users)} users."
+    )
 
     return
 

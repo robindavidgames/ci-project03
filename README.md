@@ -39,6 +39,19 @@ In see_progress(), I needed to limit the number of pieces of data shown on the t
     for words in range(20, len(user_progress)):
         print(f"Day {words + 1}: {user_progress[words]} words")
 
+## Using Enumerate instead of For loops with len and range
+Although my code worked fine, GitPod was giving a warning that for loops with len and range in them are not ideal and suggested I Enumerate. I used the tutorial here https://realpython.com/python-enumerate/ to learn about enumerating and turned this code:
+
+    for i in range(len(list_splice)):
+        list_splice[i] = int(list_splice[i])
+
+into this code:
+
+    for value, user_words in enumerate(list_splice):
+        list_splice[value] = int(user_words)
+
+This is easier for a human reader to parse.
+
 # Future Features
 ## Multiple Users
 By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row.
