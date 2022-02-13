@@ -103,6 +103,47 @@ This is easier for a human reader to parse.
 ## Multiple Users
 By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row and all are contained in the same list of dictionaries.
 
+# Deployment
+The python code is deployed to Heroku as follows:
+
+New lines are added to the end of all input fields, as per Heroku requirements.
+
+![New line at end of input field.](./assets/readme/deploy1-add_new_line.png)
+
+An instruction sent to the gitpod terminal updates the requirements.txt file.
+
+![Command line instruction.](./assets/readme/deploy2-requirements.png)
+
+![Updates requirements.txt file.](./assets/readme/deploy3-updatetext.png)
+
+I signed up to use Heroku.
+
+Created a new app and gave it a name.
+
+![Create a new app on Heroku.](./assets/readme/deploy4.png)
+
+![Create a new app on Heroku.](./assets/readme/deploy5.png)
+
+In the settings tab, I updated the Config Vars by adding CREDS and PORT keys and values.
+
+![Create a new app on Heroku.](./assets/readme/deploy6.png)
+
+![Create a new app on Heroku.](./assets/readme/deploy7.png)
+
+I added the Python and Nodejs buildpacks.
+
+![Create a new app on Heroku.](./assets/readme/deploy8.png)
+
+In the deploy section, I connected to GitHub and the appropriate project.
+
+![Create a new app on Heroku.](./assets/readme/deploy9.png)
+
+Pressing "Deploy Branch" deploys the code to Heroku.
+
+![Create a new app on Heroku.](./assets/readme/deploy11.png)
+
+![Create a new app on Heroku.](./assets/readme/deploy12.png)
+
 # Software Used
 * GitPod to edit code.
 * GitHub to host code.
