@@ -113,6 +113,13 @@ This is easier for a human reader to parse.
 ## Multiple Users
 By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row and all are contained in the same list of dictionaries.
 
+# Testing
+I have tested the code throroughly. I have also run through two validators, [PEP8](http://pep8online.com/checkresult#) and [Python Code Checker](https://extendsclass.com/python-tester.html).
+
+![Validation with PEP8.](./assets/readme/validation1-pep8.png)
+
+![Validation with Python Code Checker.](./assets/readme/validation2-pcc.png)
+
 # Deployment
 The python code is deployed to Heroku as follows:
 
