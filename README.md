@@ -109,6 +109,16 @@ into this code:
 
 This is easier for a human reader to parse.
 
+## Google Sheet not Updating on Restart
+Once the user has added a new day to the Google Sheet, they have the option to return to the main menu. I had the following code in the restart() function to update the "data" variable.
+
+    data = wordcount.get_all_values()
+
+However, this didn't work and so functions were executing with the old data. Referring to guidance on [W3Schools](https://www.w3schools.com/python/python_variables_global.asp), the following change fixed the bug. I simply wasn't referring to the global instance of "data".
+
+    global data
+    data = wordcount.get_all_values()
+
 # Future Features
 ## Multiple Users
 By updating row_to_update in update_worksheet(), etc., it would be possible to create a program that handle multiple users. As it stands, each user in the googledoc is simply a different row and all are contained in the same list of dictionaries.

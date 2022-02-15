@@ -285,6 +285,10 @@ def restart():
     Allows the user to return to the main menu.
     """
     input("Press Enter to return to the menu: ")
+
+    global data
+    data = wordcount.get_all_values()
+
     main()
 
 
