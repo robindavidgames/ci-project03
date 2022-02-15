@@ -41,7 +41,7 @@ def main():
         print("3. See your daily goal.")
         print("4. See all your progress.\n")
 
-        choice = input("Your choice: \n")
+        choice = input("Your choice: ")
 
         if choice == "1":
             menu_loop = False
