@@ -236,6 +236,7 @@ def target_message(all_users):
     print(f"\nYou write an average of {average_wordcount} words per day.")
 
     # Rank all the users in the dictionary.
+    # Code modified from two sources.
     # See README for credits.
     ranked_dictionary = all_users
     ranked_dictionary.sort(key=operator.itemgetter("wordcount"))
