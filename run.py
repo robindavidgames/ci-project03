@@ -192,8 +192,7 @@ def total_words(daily_word_count):
     """
     all_users = []
 
-    # for user in range(len(data)):
-    for user, current_list in enumerate(data):
+    for current_list in data:
         # Remove blank entries
         while '' in current_list:
             current_list.remove('')
