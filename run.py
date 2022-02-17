@@ -101,7 +101,7 @@ def prev_day():
     validating_wordcount = True
 
     while validating_date:
-        day_to_update = input("Enter the date you wish to update: ")
+        day_to_update = input("\nEnter the date you wish to update: ")
         validating_date = validate_data(day_to_update)
         # Check date is one that has been previously entered.
         if validating_date is False and int(day_to_update) >= len(data[0]):
